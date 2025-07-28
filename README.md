@@ -70,9 +70,10 @@ Masukkan kata kunci lagu: ncs
 [3] ...
 Pilih nomor (1-8): 2
 Mengunduh: Elektronomia – Limitless
-Menyimpan ke /home/hllstr/Downloads/[abcdefg] Title - Channel.m4a
-Memutar: /home/hllstr/Downloads/[abcdefg] Title - Channel.m4a
+Menyimpan ke /home/hllstr/Downloads/YTPLAY Title - Channel [abcdefg].m4a
+Memutar: /home/hllstr/Downloads/YTPLAY Title - Channel.m4a
 Cari lagi? (y/n): n
+Makasih udah pake program ini <3 - hllstr.
 ```
 
 ---
@@ -107,8 +108,8 @@ ytplay/
 - [ ] Menambahkan kontrol audio (play/pause/stop/next/prev)
 - [ ] Menambahkan fitur playlist untuk menyimpan dan mengelola daftar lagu  
 - [ ] Menambahkan opsi penyimpanan sementara: file audio disimpan di `/temp/` agar tidak memenuhi folder Downloads  
-- [ ] Menambahkan sistem pengecekan file sebelum download: jika ID audio sudah ada di direktori, langsung play tanpa download ulang  
-- [ ] Mendukung penyimpanan otomatis di `/sdcard/Download/` saat digunakan di Termux (Android)  
+- [x] Menambahkan sistem pengecekan file sebelum download: jika ID audio sudah ada di direktori, langsung play tanpa download ulang  
+- [x] Mendukung penyimpanan otomatis di `/sdcard/Download/YTPLAY` saat digunakan di Termux (Android)  
 
 ### Antarmuka & Pengalaman Pengguna
 - [ ] Menambahkan menu utama agar lebih intuitif  
