@@ -42,6 +42,7 @@ func main() {
 		vid := videos[choice-1]
 		// Download & Save Audio
 		dst := filepath.Join(userDownloads(), fmt.Sprintf("%s - %s [%s]", vid.Title, vid.Channel.Title, vid.ID))
+		// Skip download if audio file already exist
 		if _, err := os.Stat(dst); err == nil {
 			fmt.Println("File audio sudah ada skipping Download...")
 			if err := Play(dst); err != nil {
