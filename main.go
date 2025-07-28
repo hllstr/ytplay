@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -27,7 +28,7 @@ func main() {
 			fmt.Println(`Tidak ditemukan hasil :(`)
 			continue
 		}
-		// Show list (format: [n] Titleitle - Channel)
+		// Show list (format: [n] Title - Channel)
 		for i, v := range videos {
 			fmt.Printf("[%d] %s - %s\n", i+1, v.Title, v.Channel.Title)
 		}
@@ -62,9 +63,13 @@ func main() {
 }
 
 // Menentukan direktori Downloads
-// TODO : jika user pakai termux simpan ke "/sdcard/Download"
 func userDownloads() string {
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, "Downloads")
-
+	// Untuk termux/android kita simpen hasil Download nya ke /sdcard/Download
+	// buat dan simpan ke folder YTPLAY biar rapih (gak campur aduk sama downloadan lainnya)
+	if runtime.GOOS == "android" {
+		return filepath.Join("/sdcard/Download/YTPLAY")
+	} else {
+		home, _ := os.UserHomeDir()
+		return filepath.Join(home, "Downloads/YTPLAY")
+	}
 }
