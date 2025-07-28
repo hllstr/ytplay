@@ -14,7 +14,8 @@ func Play(path string) error {
 	switch runtime.GOOS {
 	case "darwin":
 		cmd = exec.Command("afplay", path)
-	case "linux", "android":
+	// IOS support using mpv (via ISH SHELL)
+	case "linux", "android", "ios":
 		cmd = exec.Command("mpv", "--no-video", path)
 	case "windows":
 		ps := fmt.Sprintf("(New-Object Media.SoundPlayer '%s').PlaySync()", path)

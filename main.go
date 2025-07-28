@@ -25,7 +25,7 @@ func main() {
 			continue
 		}
 		if len(videos) == 0 {
-			fmt.Println(`Tidak ditemukan hasil :(`)
+			fmt.Println("Tidak ditemukan hasil :(\nCoba cari dengan kata kunci lain.")
 			continue
 		}
 		// Show list (format: [n] Title - Channel)
@@ -41,7 +41,15 @@ func main() {
 		}
 		vid := videos[choice-1]
 		// Download & Save Audio
-		dst := filepath.Join(userDownloads(), fmt.Sprintf("[%s] %s - %s", vid.ID, vid.Title, vid.Channel.Title))
+		dst := filepath.Join(userDownloads(), fmt.Sprintf("%s - %s [%s]", vid.Title, vid.Channel.Title, vid.ID))
+		if _, err := os.Stat(dst); err == nil {
+			fmt.Println("File audio sudah ada skipping Download...")
+			if err := Play(dst); err != nil {
+				fmt.Println("Err Playing Audio : ", err)
+			}
+			continue
+		}
+		// Kalau belum ada, kanjut donglod
 		fmt.Println("Mengunduh : ", vid.Title)
 		if err := DownloadAudio(vid.ID, dst); err != nil {
 			fmt.Println("Gagal Download :", err)
