@@ -108,7 +108,7 @@ ytplay/
 - [ ] Menambahkan fitur playlist untuk menyimpan dan mengelola daftar lagu  
 - [ ] Menambahkan opsi penyimpanan sementara: file audio disimpan di `/temp/` agar tidak memenuhi folder Downloads  
 - [ ] Menambahkan sistem pengecekan file sebelum download: jika ID audio sudah ada di direktori, langsung play tanpa download ulang  
-- [ ] Mendukung penyimpanan otomatis di `/sdcard/Download/` saat digunakan di Termux (Android)  
+- [x] Mendukung penyimpanan otomatis di `/sdcard/Download/` saat digunakan di Termux (Android)  
 
 ### Antarmuka & Pengalaman Pengguna
 - [ ] Menambahkan menu utama agar lebih intuitif  
