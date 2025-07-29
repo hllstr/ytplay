@@ -19,7 +19,7 @@ Search, download (best‐quality M4A) and play YouTube audio straight from your 
 ## Prasyarat
 
 - Go 1.20+ (untuk build dari source)  
-- macOS: `afplay` (bawaan)  
+- macOS: `afplay` (bawaan)
 - Linux: `mpv` (install manual)  
 - Windows: PowerShell (bawaan)  
 
@@ -54,7 +54,7 @@ ytplay
 
 1. **Masukkan kata kunci** lagu (misal: `ncs` atau `Coldplay Paradise`).  
 2. **Pilih nomor** video dari 1–8.  
-3. Program **mengunduh** audio `.m4a` terbaik ke `~/Downloads/[ID] <Title> - <Channel>.m4a`.  
+3. Program **mengunduh** audio `.m4a` terbaik ke `~/Downloads/<Title> - <Channel> [ID].m4a`.  
 4. Setelah selesai, **memutar** audio secara otomatis.  
 5. Di akhir, program menanyakan “Cari lagi? (y/n)”.
 
