@@ -11,7 +11,7 @@ Search, download (best‐quality M4A) and play YouTube audio straight from your 
 - Cari lagu berdasarkan keyword  
 - Pilih dari 8 hasil teratas  
 - Download audio .m4a kualitas tertinggi  
-- Simpan otomatis ke `~/Downloads`  
+- Simpan otomatis ke `~/Downloads` atau `/sdcard/Download` untuk pengguna Termux
 - Putar langsung (macOS: afplay | Linux: mpv | Windows: PowerShell)  
 
 ---
@@ -64,14 +64,20 @@ ytplay
 
 ```shell
 $ ytplay
-Masukkan kata kunci lagu: ncs
-[1] NCS Release – Alan Walker – Fade
-[2] NCS Release – Elektronomia – Limitless
-[3] ...
-Pilih nomor (1-8): 2
-Mengunduh: Elektronomia – Limitless
-Menyimpan ke /home/hllstr/Downloads/YTPLAY Title - Channel [abcdefg].m4a
-Memutar: /home/hllstr/Downloads/YTPLAY Title - Channel.m4a
+Mau cari lagu apa? nirvana - all apologies
+[1] Nirvana - All Apologies (MTV Unplugged) - Nirvana
+[2] Nirvana - All Apologies [Lyrics] - Incesticide23
+[3] Nirvana - All Apologies (Visualizer) - Nirvana
+[4] Nirvana - All Apologies - Lyrics - Sage Lyrics
+[5] Nirvana - All Apologies (Live at Reading 1992) - Nirvana
+[6] Nirvana   All Apologies (Legendado) - Matheus Felix
+[7] Nirvana - All Apologies (Live And Loud, Seattle / 1993) - Nirvana
+[8] Nirvana - All Apologies (Live On MTV Unplugged, 1993 / Unedited) - Nirvana
+Pilih nomor (1-8) 1
+Mengunduh :  Nirvana - All Apologies (MTV Unplugged)
+Ukuran file: 3.4MB
+Progress: [100%] [#########################] 3.4MB/3.4MB
+Playing :  /home/hellstar/Downloads/YTPLAY/Nirvana - All Apologies (MTV Unplugged) - Nirvana [aWmkuH1k7uA]
 Cari lagi? (y/n): n
 Makasih udah pake program ini <3 - hllstr.
 ```
@@ -86,6 +92,7 @@ ytplay/
 ├── search.go    # wrapper ytsearch
 ├── download.go  # wrapper youtube/v2
 ├── player.go    # pemutar cross-platform
+├── ui.go        # user interface
 ├── go.mod
 └── .gitignore
 ```
@@ -123,4 +130,5 @@ ytplay/
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-```
+
+---
