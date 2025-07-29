@@ -9,7 +9,6 @@ import (
 	"github.com/kkdai/youtube/v2"
 )
 
-// function untuk Download & Save audio (auto pick best quality)
 func DownloadAudio(videoID, dst string) error {
 	client := youtube.Client{}
 	video, err := client.GetVideo(videoID)
@@ -36,7 +35,40 @@ func DownloadAudio(videoID, dst string) error {
 		return err
 	}
 	defer func() { _ = file.Close() }()
+	
+	contentLength := best.ContentLength
+	
+	if contentLength <= 0 {
+		fmt.Println("Mengunduh... (ukuran tidak diketahui)")
+		_, err = io.Copy(file, stream)
+		return err
+	}
 
-	_, err = io.Copy(file, stream)
-	return err
+	fmt.Printf("Ukuran file: %s\n", formatBytes(contentLength))
+	
+	written := int64(0)
+	ShowProgress(0, contentLength)
+
+	buffer := make([]byte, 1024)
+	
+	for {
+		n, err := stream.Read(buffer)
+		if n > 0 {
+			_, writeErr := file.Write(buffer[:n])
+			if writeErr != nil {
+				return writeErr
+			}
+			written += int64(n)
+			ShowProgress(written, contentLength)
+		}
+		
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return err
+		}
+	}
+	
+	return nil
 }
