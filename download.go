@@ -35,9 +35,9 @@ func DownloadAudio(videoID, dst string) error {
 		return err
 	}
 	defer func() { _ = file.Close() }()
-	
+
 	contentLength := best.ContentLength
-	
+
 	if contentLength <= 0 {
 		fmt.Println("Mengunduh... (ukuran tidak diketahui)")
 		_, err = io.Copy(file, stream)
@@ -45,12 +45,12 @@ func DownloadAudio(videoID, dst string) error {
 	}
 
 	fmt.Printf("Ukuran file: %s\n", formatBytes(contentLength))
-	
+
 	written := int64(0)
 	ShowProgress(0, contentLength)
 
 	buffer := make([]byte, 1024)
-	
+
 	for {
 		n, err := stream.Read(buffer)
 		if n > 0 {
@@ -61,14 +61,21 @@ func DownloadAudio(videoID, dst string) error {
 			written += int64(n)
 			ShowProgress(written, contentLength)
 		}
-		
+
 		if err == io.EOF {
 			break
 		}
 		if err != nil {
-			return err
+			r := os.Remove(dst)
+			if r != nil {
+				fmt.Println("an error occured when removing a file", r)
+			} else {
+				fmt.Println("\nFile Deleted")
+				return err
+			}
 		}
 	}
-	
+
 	return nil
 }
+
